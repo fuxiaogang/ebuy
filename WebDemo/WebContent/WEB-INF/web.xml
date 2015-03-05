@@ -12,6 +12,15 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>BizServlet</servlet-name>
+		<servlet-class>com.ourchem.biz.BizServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BizServlet</servlet-name>
+		<url-pattern>/listInfo</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 	    <welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>

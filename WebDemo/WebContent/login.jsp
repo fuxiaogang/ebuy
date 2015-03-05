@@ -4,35 +4,43 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>用户登录</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<title>用户登录</title> 
+
 </head>
-<body> 
+<body > 
    <%
       if(request.getAttribute("is_error")!=null){
     	  out.println("用户名或密码错误");
       }
    %>
    <p>
-   <form method="post" action="login"> 
+   <form method="post" action="login" class="bordered" style="width:300px;"> 
       <table>
          <tr>
-           <td>用户名</td>
+           <td class="tabtitle">用户名</td>
            <td>
-               <input type="text" id="username" name="username"/>
+               <input type="text" id="username" name="username" style="background-color:#fff;border:1px solid #c5c5c5;width:90%;"/>
            </td>
          </tr>
          <tr>
-           <td>密码</td>
+           <td  class="tabtitle">密码</td>
            <td>
-              <input type="password" id="password" name="password"/>
+              <input type="password" id="password" name="password" style="background-color:#fff;border:1px solid #c5c5c5;width:90%;"/>
            </td>
          </tr>
          <tr>
            <td colspan="2">
-               <input type="submit"/>
+               <input type="submit" name="" value="登陆"/>
            </td>
          </tr> 
       </table>  
    </form> 
+   
+<script>
+   
+
+</script>   
+   
 </body>
 </html>
