@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Map;
 
 public class DBManager {
 
@@ -38,6 +40,35 @@ public class DBManager {
 		}
 		return result;
 	}
-
+	
+    public static void save(String table,Integer id,Map<String,Object> data){
+    	String sql = "";
+    	 if(id==null){
+    		 sql = "insert into " + table + "(id,title,CREATEBY_DEPTNA) values (PK_VALUE_SEQUENCE.NEXTVAL,'"
+    				      + data.get("title") + "','" + data.get("dept") + "')";
+    	 }else{
+    		 sql = "update " + table + " set title = '" + data.get("title") + "',CREATEBY_DEPTNA = '"
+    				 + data.get("dept") + "' where id=" + id;
+    	 } 
+    	 try {
+    		 Connection conn = getConnection();
+			  PreparedStatement	pre = conn.prepareStatement(sql);
+			  pre.executeUpdate();
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		}
+    	 
+    }
+    
+    public static void delete(String table,Integer id){
+    	String sql = "delete from " + table + " where id="+ id;
+    	try {
+   		 Connection conn = getConnection();
+			  PreparedStatement	pre = conn.prepareStatement(sql);
+			  pre.executeUpdate();
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		}
+    }
 	 
 }
