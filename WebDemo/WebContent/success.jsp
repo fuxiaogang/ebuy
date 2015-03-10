@@ -10,6 +10,12 @@
 <title>Insert title here</title>
 <script>
   $(function(){ 
+	  loadTableData();  //页面加载成功后，自动执行，调用函数
+  });
+  
+  
+  //页面跳转成功后，发送异步请求到后台获取数据，并生成表格
+  function loadTableData(){
 	  $.ajax({
 		  url      : 'bizController', 
 		  data     : 'oper=listdata',
@@ -26,16 +32,20 @@
 			  }
 		  }
 	  });
-  });
+  }
 </script>
-</head>
-<body> 
+  </head>
+  <body> 
 
-<input type="button" value="新增"  onclick="javascript:location.href='bizController?oper=add'"/> <p>
-<table id="tab" class="bordered">
-  
-</table>
+	<!-- 新增按钮 
+      onclick ： 点击按钮时，会执行后面的代码；
+      location.href='bizController?oper=add' : 请求bizController的servlet
+	--> 
+	<input type="button" value="新增"  onclick="javascript:location.href='bizController?oper=add'"/> <p>
+	
+	<!-- 表格 -->
+	<table id="tab" class="bordered">  
+	</table>
 
-</body>
-
+  </body> 
 </html>

@@ -26,6 +26,14 @@ public class BizServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
+	/**
+	 * 控制页面跳转的servlet
+	 * 根据参数 oper的取值，做不同的操作：
+	 *  listdata      ： 加载表格数据
+	 *  edit 或者 add  ： 新增数据
+	 *  save          : 保存数据
+	 *  delete        ：删除数据
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -77,7 +85,7 @@ public class BizServlet extends HttpServlet {
 	}
 	
 	/**
-	 * 
+	 * 跳转到新增页面
 	 * @param data
 	 * @param response
 	 * @throws Exception
@@ -87,6 +95,13 @@ public class BizServlet extends HttpServlet {
 	}
 
 	
+	/**
+	 * 保存数据
+	 * @param req
+	 * @param resp
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void save(HttpServletRequest req, HttpServletResponse resp)throws ServletException,IOException{
 		String title = req.getParameter("title");
 		String dept = req.getParameter("dept");
@@ -95,9 +110,16 @@ public class BizServlet extends HttpServlet {
 		map.put("title", title);
 		map.put("dept", dept);  
 		DBManager.save("CMS_CONTENT", id, map);
-		 req.getRequestDispatcher("success.jsp").forward(req, resp);
+		req.getRequestDispatcher("success.jsp").forward(req, resp);
 	}
 	
+	/**
+	 * 删除数据
+	 * @param req
+	 * @param resp
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void delete(HttpServletRequest req, HttpServletResponse resp)throws ServletException,IOException{
 		Integer id = req.getParameter("id") == null ? null : Integer.parseInt( req.getParameter("id"));
 		DBManager.delete("CMS_CONTENT", id);
