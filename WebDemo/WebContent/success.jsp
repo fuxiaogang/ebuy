@@ -5,12 +5,16 @@
 <html>
 <head>
 <script src="js/jquery-1.6.4.min.js" ></script>
+<script src="script/my/test_plugins.js" ></script>
 <link href="css/base.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <script>
   $(function(){ 
 	  loadTableData();  //页面加载成功后，自动执行，调用函数
+	  $.fn.format.defaults.background = '#ccc';
+	  $('#num1').format_new({background : '#f0f'});  
+ 	  $.global_method();
   });
   
   
@@ -46,6 +50,8 @@
 	<!-- 表格 -->
 	<table id="tab" class="bordered">  
 	</table>
+	
+	<input type="text" id="num1"/>
 
   </body> 
 </html>
